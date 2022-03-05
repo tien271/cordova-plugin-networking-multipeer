@@ -128,7 +128,7 @@ import MultipeerConnectivity
 		let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: [
 			"id": 0,
 			"name": self.localPeerID.displayName,
-			"hash": NSNumber(value: UInt32(truncatingBitPattern: self.localPeerID.hash)),
+            "hash": NSNumber(value: UInt32(self.localPeerID.hash)),
 		])
 
 		self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
@@ -249,7 +249,7 @@ import MultipeerConnectivity
 			peers.append([
 				"id": NSNumber(value: self.getIdForPeer(peerID)),
 				"name": NSString(string: peerID.displayName),
-				"hash": NSNumber(value: UInt32(truncatingBitPattern: peerID.hash)),
+                "hash": NSNumber(value: UInt32(peerID.hash)),
 			])
 		}
 
@@ -294,7 +294,7 @@ import MultipeerConnectivity
 			let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsMultipart: [[
 				"id": id,
 				"name": peerID.displayName,
-				"hash": NSNumber(value: UInt32(truncatingBitPattern: peerID.hash)),
+                "hash": NSNumber(value: UInt32(peerID.hash)),
 			], invitationId])
 			pluginResult?.setKeepCallbackAs(true)
 			self.commandDelegate.send(pluginResult, callbackId: callbackId)
@@ -324,7 +324,7 @@ import MultipeerConnectivity
 			let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: [
 				"id": id,
 				"name": peerID.displayName,
-				"hash": NSNumber(value: UInt32(truncatingBitPattern: peerID.hash)),
+                "hash": NSNumber(value: UInt32(peerID.hash)),
 			])
 			pluginResult?.setKeepCallbackAs(true)
 			self.commandDelegate.send(pluginResult, callbackId: callbackId)
@@ -343,7 +343,7 @@ import MultipeerConnectivity
 			let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: [
 				"id": id,
 				"name": peerID.displayName,
-				"hash": NSNumber(value: UInt32(truncatingBitPattern: peerID.hash)),
+                "hash": NSNumber(value: UInt32(peerID.hash)),
 			])
 			pluginResult?.setKeepCallbackAs(true)
 			self.commandDelegate.send(pluginResult, callbackId: callbackId)
@@ -362,7 +362,7 @@ import MultipeerConnectivity
 			let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsMultipart: [[
 				"id": id,
 				"name": peerID.displayName,
-				"hash": NSNumber(value: UInt32(truncatingBitPattern: peerID.hash)),
+                "hash": NSNumber(value: UInt32(peerID.hash)),
 			], data])
 			pluginResult?.setKeepCallbackAs(true)
 			self.commandDelegate.send(pluginResult, callbackId: callbackId)
@@ -372,7 +372,7 @@ import MultipeerConnectivity
 	func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
 	}
 
-	func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL, withError error: Error?) {
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
 	}
 
 	func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
@@ -397,7 +397,7 @@ import MultipeerConnectivity
 			let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsMultipart: [[
 				"id": id,
 				"name": peerID.displayName,
-				"hash": NSNumber(value: UInt32(truncatingBitPattern: peerID.hash)),
+                "hash": NSNumber(value: UInt32(peerID.hash)),
 			], strState])
 			pluginResult?.setKeepCallbackAs(true)
 			self.commandDelegate.send(pluginResult, callbackId: callbackId)
