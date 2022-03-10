@@ -37,7 +37,7 @@
 		<source-file src="src/ios/NetworkingMultipeer.swift" />
 		<header-file src="src/ios/TryCatch.h" />
 		<source-file src="src/ios/TryCatch.m" />
-		<dependency id="cordova-plugin-add-swift-support" version="1.4.0" />
+		<dependency id="cordova-plugin-add-swift-support" version="2.0.2" />
 	</platform>
 </plugin>
 
